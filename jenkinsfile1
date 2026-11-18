@@ -1,0 +1,21 @@
+stage('build'){
+      steps{
+      echo 'Verification des fichiers'
+
+      sh 'test -f index.html'
+	sh 'test -f style .css'
+=================================
+	bat 'if not exist index.html exit /b1'
+	bat 'if not exist style.css exit /b1'
+        }
+}
+stage('test'){
+	steps{
+	     echo 'Verification du fichier HTML'*
+	     sh 'grep -q"<html" index.html'
+             sh 'grep -q"<h1>" index.html'
+======================================
+             bat 'findstr /c:"<html" index.html'
+             bat 'findstr /c:"<h1>" index.html'
+}
+}
